@@ -1,13 +1,14 @@
-import { createrRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
 import CoachDetail from './pages/coaches/CoachDetail.vue';
 import CoachesList from './pages/coaches/CoachesList.vue';
 import CoachesRegistration from './pages/coaches/CoachesRegistration.vue';
 import ContactCoach from './pages/requests/ContactCoach.vue';
-import RequestReceived from './pages/requests/RequestReceived.vue';
+import RequestsReceived from './pages/requests/RequestsReceived.vue';
 import NotFound from './pages/NotFound.vue';
 
-const router = createrRouter({
+
+const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', redirect: '/coaches' },
@@ -20,7 +21,9 @@ const router = createrRouter({
       ],
     },
     { path: '/register', component: CoachesRegistration },
-    { path: '/requests', component: RequestReceived },
+    { path: '/requests', component: RequestsReceived },
     { path: '/:notFound(.*)', component: NotFound },
   ],
 });
+
+export default router;
