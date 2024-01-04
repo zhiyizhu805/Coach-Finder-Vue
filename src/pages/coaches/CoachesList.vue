@@ -1,8 +1,9 @@
 <template>
+<base-card>
   <section>FILTER</section>
   <section>
     <div class="controls">
-      <button>Refresh</button>
+      <base-button mode="outeline">Refresh</base-button>
       <router-link to="/register">Register as a Coach</router-link>
     </div>
     <ul v-if="hasCoaches">
@@ -20,13 +21,15 @@
     <h3 v-else>No coaches found.</h3>
   </section>
   <section>LIST OF COACHES</section>
+  </base-card>
 </template>
 
 <script>
 import CoachItem from '../../components/coaches/CoachItem.vue';
+import BaseButton from '../../components/ui/BaseButton.vue';
 // import { mapGetters } from 'vuex'
 export default {
-  components: { CoachItem },
+  components: { CoachItem, BaseButton },
   computed: {
     filteredCoaches() {
       return this.$store.getters['coaches/coaches'];
