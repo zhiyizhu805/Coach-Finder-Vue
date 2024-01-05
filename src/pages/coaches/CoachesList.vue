@@ -1,4 +1,10 @@
 <template>
+<!-- (3.1) add error dialog -->
+  <!-- two !! will convert the error to a boolean -->
+  <!-- (3.3) listening the catch event -->
+  <base-dialog :show="!!error" title="A error occured!" @close="handleError">
+    <p>{{error}}</p>
+  </base-dialog>
   <base-card>
     <section>
       FILTER
@@ -10,7 +16,7 @@
         <base-button mode="outeline" @click="loadCoaches">Refresh</base-button>
         <base-button v-if="!isCoach && !isLoading" link  to="/register">Register as a Coach</base-button>
       </div>
-      <!-- 2.5 register a basespinner globally then use it here -->
+      <!-- (2.5) register a basespinner globally then use it here -->
       <div v-if="isLoading">
         <base-spinner></base-spinner>
       </div>
@@ -99,9 +105,11 @@ export default {
 
       //(2.4) set isLoading to false
       this.isLoading = false;
-
     },
-  },
+    //(3.4) add a handleError() method
+    handleError(){
+      this.error = null
+  },}
 };
 </script>
 

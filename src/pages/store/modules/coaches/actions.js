@@ -15,8 +15,11 @@ export default {
         body: JSON.stringify(coachData),
       })
       //   const responseData = await response.json()
+
+      //(3.1) error handling
         if(!response.ok) {
-          throw new Error("Failed to register coach")
+          const error = new Error(response.message || 'Failed to fetch!')
+          throw error
         }
       context.commit('registerCoach', {
           ...coachData,
