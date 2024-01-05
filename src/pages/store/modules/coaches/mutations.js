@@ -6,5 +6,9 @@ export default {
     //4. set local coaches data to the data from firebase
     setCoaches(state, payload) {
         state.coaches = payload;
+    },
+    //(4.1) set the last fetch timestamp
+    setFetchTimestamp(state) {
+        state.lastFetch = new Date().getTime();
     }
 }

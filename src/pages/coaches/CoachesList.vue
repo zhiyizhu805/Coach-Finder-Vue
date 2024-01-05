@@ -5,15 +5,14 @@
   <base-dialog :show="!!error" title="A error occured!" @close="handleError">
     <p>{{error}}</p>
   </base-dialog>
-  <base-card>
     <section>
-      FILTER
       <coach-filter @change-filter="setFilter"></coach-filter>
     </section>
+  <base-card>
     <section>
       <div class="controls">
         <!-- 7.when click ,call the loadCoaches function -->
-        <base-button mode="outeline" @click="loadCoaches">Refresh</base-button>
+        <base-button mode="outeline" @click="loadCoaches(true)">Refresh</base-button>
         <base-button v-if="!isCoach && !isLoading" link  to="/register">Register as a Coach</base-button>
       </div>
       <!-- (2.5) register a basespinner globally then use it here -->
@@ -92,13 +91,13 @@ export default {
     },
 
     //5. load all coaches from the server
-    async loadCoaches() {
+    async loadCoaches(refresh = false) {
       //(2.2) set isLoading to true
       this.isLoading = true;
       //(3.3) use try/catch to catch any errors
       try{
         //(2.3) this dispatch will return a promise.We can use async/await to wait for the promise to resolve
-        await this.$store.dispatch('coaches/loadCoaches');
+        await this.$store.dispatch('coaches/loadCoaches',{forceRefresh:refresh});
       }catch(error){
         this.error = error.message || 'Failed to fetch coaches!'
       }

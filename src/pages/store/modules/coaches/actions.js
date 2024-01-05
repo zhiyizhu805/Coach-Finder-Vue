@@ -27,13 +27,15 @@ export default {
     },
 
     //3. loadCoaches action: fetching data from firebase
-    async loadCoaches(context) {
+    async loadCoaches(context,payload) {
+      if (!payload.forceRefresh && !context.getters.shouldUpdate) return
         // fetch all coaches from firebase
         const response = await fetch(`https://data-c0854-default-rtdb.firebaseio.com/coaches.json`)
         const responseData = await response.json()
 
         if (!response.ok) {
-            //error handling
+            const error = new Error(responseData.message || 'Failed to fetch!')
+            throw error
         }
 
         const coaches = []
@@ -53,6 +55,8 @@ export default {
 
         // commit the data to the state
         context.commit('setCoaches', coaches)
+        //(4.2) 
+        context.commit('setFetchTimestamp')
 
   }}
   
