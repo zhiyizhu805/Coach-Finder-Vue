@@ -6,7 +6,7 @@
     </section>
     <section>
       <div class="controls">
-        <base-button mode="outeline">Refresh</base-button>
+        <base-button mode="outeline" @click="loadCoaches">Refresh</base-button>
         <base-button v-if="!isCoach" link  to="/register">Register as a Coach</base-button>
       </div>
       <ul v-if="hasCoaches">
@@ -66,9 +66,18 @@ export default {
         return this.$store.getters['coaches/isCoach']
      }
   },
+  // 6.the loadCoaches() method is called when the component is created
+  created(){
+      this.loadCoaches()
+  },
   methods: {
     setFilter(updatedFilters) {
       this.activeFilters = updatedFilters;
+    },
+
+    //5. load all coaches from the server
+    loadCoaches() {
+      this.$store.dispatch('coaches/loadCoaches');
     },
   },
 };
