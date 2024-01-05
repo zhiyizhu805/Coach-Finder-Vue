@@ -23,7 +23,7 @@ export default {
     return {
       email: '',
       message: '',
-      formIsValid: false,
+      formIsValid: true,
     };
   },
   methods: {
@@ -35,8 +35,14 @@ export default {
         this.message === ''
       ) {
         this.formIsValid = false;
-        return
+        return;
       }
+      this.$store.dispatch('requests/contactCoach', {
+        email: this.email,
+        message: this.message,
+        coachId: this.$route.id,
+      });
+      this.$router.replace('/coaches');
     },
   },
 };
