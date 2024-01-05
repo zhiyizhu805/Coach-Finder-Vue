@@ -7,7 +7,7 @@
     <section>
       <div class="controls">
         <base-button mode="outeline">Refresh</base-button>
-        <router-link to="/register">Register as a Coach</router-link>
+        <base-button v-if="!isCoach" link  to="/register">Register as a Coach</base-button>
       </div>
       <ul v-if="hasCoaches">
         <!-- <li v-for="coach in filteredCoaches" :key="coach.id"></li> -->
@@ -62,6 +62,9 @@ export default {
     hasCoaches() {
       return this.$store.getters['coaches/hasCoaches'];
     },
+     isCoach(){
+        return this.$store.getters['coaches/isCoach']
+     }
   },
   methods: {
     setFilter(updatedFilters) {

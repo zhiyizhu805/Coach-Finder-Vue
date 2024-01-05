@@ -1,15 +1,23 @@
 <template>
    REGISTER
    <base-card>
-  <coach-registration></coach-registration>
+   <coach-form @save-data="saveData"></coach-form>
    </base-card>
 </template>
 
 <script>
-import CoachRegistration from '../../components/coaches/CoachRegistration.vue'
+import CoachForm from '../../components/coaches/CoachForm.vue'
 export default {
    components:{
-      CoachRegistration,
+      CoachForm,
+   },
+   methods:{
+      saveData(formData){
+         this.$store.dispatch('coaches/registerCoach',formData)
+         //this method cannot go back to the previous page
+         this.$router.replace('/coaches')
+         // this.$push('/coaches')
+      }
    }
    
 }
