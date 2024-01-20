@@ -3,6 +3,5 @@ export default{
         state.token = payload.token;
         state.userId = payload.userId;
         state.tokenExpiration = payload.tokenExpiration;
-        console.log('state',state)
     }
 }

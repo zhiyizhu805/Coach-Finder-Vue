@@ -2,7 +2,6 @@ export default {
     // 1. registerCoach action: sending data to firebase
     async registerCoach(context, data) {
       const userId = context.rootGetters.userId
-      console.log('userId',userId)
       const coachData = {
         firstName: data.first,
         lastName: data.last,
@@ -10,12 +9,8 @@ export default {
         description: data.desc,
         hourlyRate: data.rate,
       };
-      
-      //(auth1) need to access rootGetters to get the token
-      const token = context.rootGetters.token
-      
-      //(auth2) add query parameter with the token for authentication
-      const response = await fetch(`https://data-c0854-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=`+token, {
+  
+      const response = await fetch(`https://data-c0854-default-rtdb.firebaseio.com/coaches/${userId}.json`, {
         method: 'PUT', //PUT means to override the existing data if it exists// POST means to add new data
         body: JSON.stringify(coachData),
       })
