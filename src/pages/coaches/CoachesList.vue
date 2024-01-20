@@ -16,7 +16,9 @@
           <base-button mode="outeline" @click="loadCoaches(true)"
             >Refresh</base-button
           >
-          <base-button v-if="!isCoach && !isLoading" link to="/register"
+          <base-button v-if="!isLoggedIn" link to="/auth">Login</base-button>
+          <!-- (Update UI based on Auth state 3): Show regiser button accoring to the auth state -->
+          <base-button v-if="isLoggedIn && !isCoach && !isLoading" link to="/register"
             >Register as a Coach</base-button
           >
         </div>
@@ -64,6 +66,10 @@ export default {
     };
   },
   computed: {
+    // (Update UI based on Auth state 2)
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    },
     filteredCoaches() {
       const coaches = this.$store.getters['coaches/coaches'];
       return coaches.filter((coach) => {

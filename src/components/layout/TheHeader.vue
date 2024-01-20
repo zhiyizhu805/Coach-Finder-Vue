@@ -4,11 +4,26 @@
       <h1><router-link to="/"> Find a Coach </router-link></h1>
       <ul>
         <li><router-link to="/coaches">All Coaches</router-link></li>
-        <li><router-link to="/requests">Requests</router-link></li>
+        <!-- (Update UI based on Auth state 5)-->
+        <li v-if="isLoggedIn"><router-link to="/requests">Requests</router-link></li>
+        <li v-else>
+          <router-link to="/auth">Login</router-link>
+          </li>
       </ul>
     </nav>
   </header>
 </template>
+
+<script>
+export default {
+  //(Update UI based on Auth state 4) also show login button at header 
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated
+    },
+  },
+}
+</script>
 
 <style scoped>
 header {
