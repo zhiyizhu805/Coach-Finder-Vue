@@ -1,4 +1,4 @@
-<template>
+/Users/zhiyizhu/Desktop/Screen Shot 2024-01-21 at 09.12.31 AM.png<template>
   <base-card>
     <base-dialog :show="!!error" title="An error occured" @close="handleError">
       <p>
@@ -68,21 +68,21 @@ export default {
         return;
       }
       this.isLoading = true;
-      try {
-        if (this.mode === 'login') {
-          // Send a request to login
-        } else {
-          // Send a request to signup
-          await this.$store.dispatch('signup', {
+      const actionPayload = {
             email: this.email,
             password: this.password,
-          });
-          this.isLoading = false;
+          }
+      try {
+        if (this.mode === 'login') {
+          await this.$store.dispatch('login', actionPayload);
+        } else {
+          // Send a request to signup
+          await this.$store.dispatch('signup', actionPayload);
         }
       } catch (error) {
         this.error = error.message || 'An error occured';
-        this.isLoading = false;
       }
+        this.isLoading = false;
     },
     switchMode() {
       this.mode = this.mode === 'login' ? 'signup' : 'login';
