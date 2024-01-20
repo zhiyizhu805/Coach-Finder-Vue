@@ -46,8 +46,13 @@ export default {
             this.switchMode();
             if (this.mode === 'login') {
                 // Send a request to login
+
             } else {
                 // Send a request to signup
+                this.$store.dispatch('signup', {
+                    email: this.email,
+                    password: this.password
+                })
             }
         },
         switchMode() {
