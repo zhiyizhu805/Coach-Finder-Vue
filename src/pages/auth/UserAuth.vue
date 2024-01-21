@@ -79,6 +79,10 @@ export default {
           // Send a request to signup
           await this.$store.dispatch('signup', actionPayload);
         }
+        // redirect 2 : access query param by this.$route.query.redirect. This will either be undefined or the value of the redirect query param
+        
+        const redirectUrl ='/' + (this.$route.query.redirect || 'coaches');
+        this.$router.replace(redirectUrl);
       } catch (error) {
         this.error = error.message || 'An error occured';
       }
