@@ -91,4 +91,22 @@ header ul {
 li {
   margin: 0 0.5rem;
 }
+
+@media (max-width:640px){
+  header a {
+    padding: 0.4rem 0.75rem;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+  header ul {
+    flex-direction: column;
+  }
+  header li {
+    margin: 0.1rem 0;
+  }
+  li{
+    font-size: 0.8rem;
+  }
+}
 </style>

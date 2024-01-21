@@ -2,7 +2,7 @@
   <li>
     <h3>{{ fullName }}</h3>
     <h4>${{ rate }}/hour</h4>
-    <div>
+    <div class="type">
       <base-badge v-for="area in areas" :key="area" :type="area" :title="area"></base-badge>
     </div>
     <div class="actions">
@@ -56,4 +56,8 @@ div {
   display: flex;
   justify-content: flex-end;
 }
+
+
+
 </style>
+c

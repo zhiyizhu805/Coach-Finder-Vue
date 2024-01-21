@@ -1,19 +1,18 @@
 <template>
-    <span class="badge" :class="type">
-        {{title}}
-    </span>
+  <span class="badge" :class="type">
+      {{ title }}
+  </span>
 </template>
-
 
 <script>
 export default {
-    props: ['type','title'],
-    computed: {
-        text() {
-            return this.title.toUpperCase()
-        }
-    }
-}
+  props: ['type', 'title'],
+  computed: {
+    text() {
+      return this.title.toUpperCase();
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -39,5 +38,14 @@ export default {
 .career {
   background-color: #8d006e;
   color: white;
+}
+
+@media (max-width:640px){
+  .badge {
+    padding: 0.25rem 0.75rem;
+  }
+  span{
+    font-size: 0.7rem;
+  }
 }
 </style>

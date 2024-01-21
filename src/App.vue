@@ -1,6 +1,6 @@
 <template>
   <the-header></the-header>
-  <router-view v-slot="slotProps">
+  <router-view v-slot="slotProps" >
     <transition name="route" mode="out-in">
       <component :is="slotProps.Component"></component>
     </transition>
@@ -47,6 +47,11 @@ body {
   margin: 0;
 }
 
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+
+
 .route-enter-from {
   opacity: 0;
   transform: translateY(-30px);
@@ -70,4 +75,5 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
 </style>

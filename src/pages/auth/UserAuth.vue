@@ -1,4 +1,4 @@
-/Users/zhiyizhu/Desktop/Screen Shot 2024-01-21 at 09.12.31 AM.png<template>
+<template>
   <base-card>
     <base-dialog :show="!!error" title="An error occured" @close="handleError">
       <p>

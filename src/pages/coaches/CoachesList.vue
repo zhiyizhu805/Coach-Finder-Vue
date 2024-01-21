@@ -17,7 +17,7 @@
             >Refresh</base-button
           >
           <!-- rediecte 1 :add query param to the login link so that we can redirect to the register page after login -->
-          <base-button v-if="!isLoggedIn" link to="/auth?redirect=register">Login to register as a Coach</base-button>
+          <base-button v-if="!isLoggedIn" link to="/auth?redirect=register">Register as a Coach</base-button>
           <!-- (Update UI based on Auth state 3): Show regiser button accoring to the auth state -->
           <base-button v-if="isLoggedIn && !isCoach && !isLoading" link to="/register"
             >Register as a coach</base-button

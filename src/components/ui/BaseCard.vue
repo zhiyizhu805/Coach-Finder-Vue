@@ -12,4 +12,10 @@
   margin: 2rem auto;
   max-width: 40rem;
 }
+
+@media(max-width: 640px) {
+  .card {
+    box-shadow:none
+  }
+}
 </style>
