@@ -47,11 +47,6 @@ body {
   margin: 0;
 }
 
-.selector-for-some-widget {
-  box-sizing: content-box;
-}
-
-
 .route-enter-from {
   opacity: 0;
   transform: translateY(-30px);
