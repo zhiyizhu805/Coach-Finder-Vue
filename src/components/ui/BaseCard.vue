@@ -15,7 +15,7 @@
 
 @media(max-width: 640px) {
   .card {
-    box-shadow:none
+  max-width: 90%;
   }
 }
 </style>
