@@ -1,7 +1,7 @@
 <template>
   <div>
-    REGISTER
     <base-card>
+      <h2>REGISTER</h2>
       <coach-form @save-data="saveData"></coach-form>
     </base-card>
   </div>

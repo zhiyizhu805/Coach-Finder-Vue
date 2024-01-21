@@ -14,6 +14,18 @@ export default {
   components: {
     TheHeader
   },
+  // (auto logout4.5)add computed property ,return true or false if didAutoLogout is true or false 
+  computed: {
+    didAutoLogout() {
+      return this.$store.getters.didAutoLogout;
+    }
+  },
+  // (auto logout4.6)add watch property ,watch didAutoLogout property. Since didAutoLogout is initialized as false, if it changes to true, it means that the user has been logged out automatically. In this case, we want to redirect the user to the coaches page.
+  watch: {
+    didAutoLogout(currrentValue,oldValue){
+      if(currrentValue && currrentValue !== oldValue){
+        this.$router.replace('/coaches');
+      }}},
   created(){
     this.$store.dispatch('tryLogin')
   }  

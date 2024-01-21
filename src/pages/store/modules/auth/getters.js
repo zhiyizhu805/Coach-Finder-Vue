@@ -11,5 +11,9 @@ export default {
         // if we have a token, we are authenticated
         // if we don't have a token, we are not authenticated
         return !!state.token;
+    },
+    //(auto logout4.4)since we need to watch the state in app.vue, we need to add a getter 
+    didAutoLogout(state){
+        return state.didAutoLogout;
     }
 }
