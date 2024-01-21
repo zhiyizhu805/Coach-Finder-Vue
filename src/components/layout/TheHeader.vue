@@ -9,7 +9,7 @@
         <li v-else>
           <router-link to="/auth">Login</router-link>
           </li>
-        <li v-if="isLoggedIn"><base-button @click="logout">Logout</base-button></li>
+        <li v-if="isLoggedIn" class="logout"><base-button @click="logout">Logout</base-button></li>
       </ul>
     </nav>
   </header>
@@ -100,13 +100,18 @@ li {
     font-size: 1.5rem;
   }
   header ul {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
+  .logout {
+    grid-column: 2 / 3;}
+
   header li {
     margin: 0.1rem 0;
   }
   li{
     font-size: 0.8rem;
   }
+  
 }
 </style>
